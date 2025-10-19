@@ -1,0 +1,137 @@
+.browser-extension-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.browser-extension-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.browser-extension-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.browser-extension-tabs::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 3px;
+}
+
+.browser-tab {
+  position: relative;
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.browser-tab:hover {
+  background: var(--bg-hover);
+}
+
+.browser-tab.active {
+  background: var(--bg-selected);
+}
+
+.browser-tab.has-remnants {
+  background: rgba(255, 59, 48, 0.05);
+}
+
+.browser-tab.active.has-remnants {
+  background: rgba(255, 59, 48, 0.1);
+}
+
+.browser-tab-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.browser-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.browser-tab.active .browser-name {
+  color: var(--browser-color);
+}
+
+.browser-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.remnant-count {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--status-error);
+}
+
+.remnant-size {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.no-remnants {
+  font-size: 12px;
+  color: var(--status-success);
+  font-weight: 500;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .browser-extension-tabs {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .browser-tab {
+    min-width: 100px;
+    padding: 10px 12px;
+  }
+
+  .browser-name {
+    font-size: 13px;
+  }
+
+  .remnant-count {
+    font-size: 14px;
+  }
+
+  .remnant-size {
+    font-size: 10px;
+  }
+}

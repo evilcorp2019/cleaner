@@ -1,0 +1,351 @@
+/* Theme CSS Variables */
+
+/* Default Theme (Light) - Applied immediately before React mounts */
+:root {
+  /* Background colors */
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f9f9f9;
+  --bg-hover: #f6f8ff;
+  --bg-selected: #eff6ff;
+
+  /* Text colors */
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+
+  /* Border colors */
+  --border-primary: #e5e5e7;
+  --border-secondary: #d1d1d6;
+  --border-accent: #0969DA;
+
+  /* Accent colors */
+  --accent-primary: #0969DA;
+  --accent-primary-hover: #0550a8;
+  --accent-secondary: #1A7F37;
+  --accent-secondary-hover: #116329;
+
+  /* Status colors */
+  --status-success: #1A7F37;
+  --status-warning: #d97706;
+  --status-error: #ff3b30;
+  --status-info: #0969DA;
+
+  /* Privacy Score colors */
+  --score-excellent: #1A7F37;
+  --score-good: #34C759;
+  --score-fair: #FF9500;
+  --score-poor: #FF3B30;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Overlay */
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* Design System Variables */
+
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 48px;
+
+  /* Typography Scale */
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Page Widths */
+  --page-width-sm: 800px;
+  --page-width-md: 1000px;
+  --page-width-lg: 1200px;
+  --page-width-xl: 1400px;
+
+  /* Header Heights */
+  --header-height: 72px;
+  --header-height-compact: 64px;
+
+  /* Button Sizes */
+  --btn-padding-sm: 6px 12px;
+  --btn-padding-md: 8px 16px;
+  --btn-padding-lg: 10px 20px;
+  --btn-padding-xl: 12px 24px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Light Theme (Default) */
+:root[data-theme="light"] {
+  /* Background colors */
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f9f9f9;
+  --bg-hover: #f6f8ff;
+  --bg-selected: #eff6ff;
+
+  /* Text colors */
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+
+  /* Border colors */
+  --border-primary: #e5e5e7;
+  --border-secondary: #d1d1d6;
+  --border-accent: #0969DA;
+
+  /* Accent colors */
+  --accent-primary: #0969DA;
+  --accent-primary-hover: #0550a8;
+  --accent-secondary: #1A7F37;
+  --accent-secondary-hover: #116329;
+
+  /* Status colors */
+  --status-success: #1A7F37;
+  --status-warning: #d97706;
+  --status-error: #ff3b30;
+  --status-info: #0969DA;
+
+  /* Privacy Score colors */
+  --score-excellent: #1A7F37;
+  --score-good: #34C759;
+  --score-fair: #FF9500;
+  --score-poor: #FF3B30;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Overlay */
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* Design System Variables */
+
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 48px;
+
+  /* Typography Scale */
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Page Widths */
+  --page-width-sm: 800px;
+  --page-width-md: 1000px;
+  --page-width-lg: 1200px;
+  --page-width-xl: 1400px;
+
+  /* Header Heights */
+  --header-height: 72px;
+  --header-height-compact: 64px;
+
+  /* Button Sizes */
+  --btn-padding-sm: 6px 12px;
+  --btn-padding-md: 8px 16px;
+  --btn-padding-lg: 10px 20px;
+  --btn-padding-xl: 12px 24px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  /* Background colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #333333;
+  --bg-hover: #2d3748;
+  --bg-selected: #1e3a5f;
+
+  /* Text colors */
+  --text-primary: #f5f5f7;
+  --text-secondary: #a8a8ad;
+  --text-tertiary: #8e8e93;
+
+  /* Border colors */
+  --border-primary: #3a3a3c;
+  --border-secondary: #48484a;
+  --border-accent: #4a9eff;
+
+  /* Accent colors */
+  --accent-primary: #4a9eff;
+  --accent-primary-hover: #357abd;
+  --accent-secondary: #30d158;
+  --accent-secondary-hover: #24a043;
+
+  /* Status colors */
+  --status-success: #30d158;
+  --status-warning: #ff9f0a;
+  --status-error: #ff453a;
+  --status-info: #4a9eff;
+
+  /* Privacy Score colors */
+  --score-excellent: #30d158;
+  --score-good: #34C759;
+  --score-fair: #FF9F0A;
+  --score-poor: #FF453A;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+  /* Overlay */
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+
+  /* Design System Variables (same values for both themes) */
+
+  /* Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 48px;
+
+  /* Typography Scale */
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Page Widths */
+  --page-width-sm: 800px;
+  --page-width-md: 1000px;
+  --page-width-lg: 1200px;
+  --page-width-xl: 1400px;
+
+  /* Header Heights */
+  --header-height: 72px;
+  --header-height-compact: 64px;
+
+  /* Button Sizes */
+  --btn-padding-sm: 6px 12px;
+  --btn-padding-md: 8px 16px;
+  --btn-padding-lg: 10px 20px;
+  --btn-padding-xl: 12px 24px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Smooth transition for theme changes */
+* {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease;
+}
+
+/* Override transition for buttons to prevent visibility issues */
+button,
+.btn,
+.check-updates-button {
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease !important;
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+  transition: none !important;
+}

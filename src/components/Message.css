@@ -1,0 +1,186 @@
+.message {
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.message-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.message-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.message-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.message-text {
+  flex: 1;
+}
+
+.message-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.message-body {
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.message-details {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  word-break: break-word;
+}
+
+.message-dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.message-dismiss:hover {
+  opacity: 1;
+}
+
+.message-dismiss svg {
+  width: 100%;
+  height: 100%;
+}
+
+.message-actions {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-primary);
+}
+
+.message-action-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Error variant */
+.message-error {
+  background: rgba(255, 59, 48, 0.1);
+  border-color: var(--status-error);
+  color: var(--text-primary);
+}
+
+.message-error .message-icon {
+  color: var(--status-error);
+}
+
+.message-error .message-title {
+  color: var(--status-error);
+}
+
+.message-action-button-error {
+  background: var(--status-error);
+  color: white;
+}
+
+.message-action-button-error:hover {
+  background: #b91c1c;
+}
+
+/* Warning variant */
+.message-warning {
+  background: rgba(255, 149, 0, 0.1);
+  border-color: var(--status-warning);
+  color: var(--text-primary);
+}
+
+.message-warning .message-icon {
+  color: var(--status-warning);
+}
+
+.message-warning .message-title {
+  color: var(--status-warning);
+}
+
+.message-action-button-warning {
+  background: var(--status-warning);
+  color: white;
+}
+
+.message-action-button-warning:hover {
+  background: #d97706;
+}
+
+/* Info variant */
+.message-info {
+  background: var(--bg-selected);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.message-info .message-icon {
+  color: var(--accent-primary);
+}
+
+.message-info .message-title {
+  color: var(--accent-primary);
+}
+
+.message-action-button-info {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.message-action-button-info:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* Success variant */
+.message-success {
+  background: rgba(26, 127, 55, 0.1);
+  border-color: var(--status-success);
+  color: var(--text-primary);
+}
+
+.message-success .message-icon {
+  color: var(--status-success);
+}
+
+.message-success .message-title {
+  color: var(--status-success);
+}
+
+.message-action-button-success {
+  background: var(--status-success);
+  color: white;
+}
+
+.message-action-button-success:hover {
+  background: var(--accent-secondary-hover);
+}

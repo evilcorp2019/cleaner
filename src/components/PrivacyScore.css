@@ -1,0 +1,230 @@
+.privacy-score-container {
+  border-radius: 12px;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+.privacy-score-container.score-excellent {
+  border-color: var(--score-excellent);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(26, 127, 55, 0.05) 100%);
+}
+
+.privacy-score-container.score-fair {
+  border-color: var(--score-fair);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 149, 0, 0.05) 100%);
+}
+
+.privacy-score-container.score-poor {
+  border-color: var(--score-poor);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 59, 48, 0.05) 100%);
+}
+
+.privacy-score-main {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.score-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.score-excellent .score-icon {
+  color: var(--score-excellent);
+}
+
+.score-fair .score-icon {
+  color: var(--score-fair);
+}
+
+.score-poor .score-icon {
+  color: var(--score-poor);
+}
+
+.score-content {
+  flex: 1;
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.score-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.info-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: help;
+  font-size: 20px;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.info-button:hover {
+  color: var(--accent-primary);
+}
+
+.score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.score-number {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.score-excellent .score-number {
+  color: var(--score-excellent);
+}
+
+.score-fair .score-number {
+  color: var(--score-fair);
+}
+
+.score-poor .score-number {
+  color: var(--score-poor);
+}
+
+.score-grade {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+}
+
+.score-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.score-improvement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--bg-selected);
+  border-radius: 8px;
+  border: 1px solid var(--accent-primary);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.score-improvement svg {
+  width: 18px;
+  height: 18px;
+  color: var(--status-success);
+  flex-shrink: 0;
+}
+
+.score-improvement strong {
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+.privacy-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-value.highlight-tracker {
+  color: var(--status-error);
+}
+
+.tracker-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(255, 149, 0, 0.1);
+  border: 1px solid var(--status-warning);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.tracker-warning svg {
+  width: 20px;
+  height: 20px;
+  color: var(--status-warning);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tracker-warning strong {
+  color: var(--status-warning);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .privacy-score-main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .score-icon {
+    font-size: 40px;
+  }
+
+  .score-number {
+    font-size: 40px;
+  }
+
+  .privacy-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

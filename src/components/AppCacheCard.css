@@ -1,0 +1,262 @@
+/* Application Cache Card Styles */
+
+.app-cache-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app-cache-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.app-cache-card.selected {
+  border-color: var(--accent-primary);
+  background: var(--bg-selected);
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+.app-cache-card.not-installed {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.app-cache-card.not-installed:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-primary);
+}
+
+.app-cache-card.running {
+  border-color: var(--status-warning);
+}
+
+/* Card Header */
+.app-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.app-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.app-icon {
+  font-size: 48px;
+  display: block;
+  line-height: 1;
+}
+
+.running-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  color: var(--status-success);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.app-checkbox {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.app-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+}
+
+/* Card Body */
+.app-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.app-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.app-category {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-cache-size {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+}
+
+.cache-size {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.cache-size.zero {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.cache-size.large {
+  color: var(--status-warning);
+}
+
+.cache-age {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* Badges */
+.not-installed-badge,
+.no-cache-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.not-installed-badge svg,
+.no-cache-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.no-cache-badge {
+  color: var(--status-success);
+}
+
+/* Clean Button */
+.clean-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.clean-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.clean-button:hover {
+  background: var(--accent-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.clean-button.cleaning {
+  background: var(--status-info);
+  cursor: wait;
+}
+
+.clean-button.disabled {
+  background: var(--text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.clean-button.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.clean-button .spinner {
+  animation: spin 1s linear infinite;
+}
+
+.clean-button .spinner circle {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 25;
+}
+
+/* App Description */
+.app-description {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-cache-card {
+    padding: 16px;
+  }
+
+  .app-icon {
+    font-size: 40px;
+  }
+
+  .app-name {
+    font-size: 16px;
+  }
+
+  .cache-size {
+    font-size: 20px;
+  }
+
+  .clean-button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

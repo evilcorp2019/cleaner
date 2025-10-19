@@ -1,0 +1,354 @@
+.system-updater-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+}
+
+.page-header {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.back-button {
+  padding: var(--btn-padding-md);
+  background: var(--bg-secondary);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.back-button:hover {
+  background: var(--bg-primary);
+  color: var(--accent-primary-hover);
+}
+
+.page-header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+}
+
+.updater-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  max-width: var(--page-width-md);
+  margin: 0 auto;
+}
+
+.updater-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.updater-header h2 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.updater-description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+.updater-actions {
+  margin-bottom: var(--spacing-xl, 20px);
+  display: flex !important;
+  gap: var(--spacing-md, 12px);
+  flex-wrap: wrap;
+  /* Debug: ensure visibility */
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 60px;
+  background: rgba(0, 255, 0, 0.05); /* Debug: green tint to see container */
+}
+
+.btn {
+  padding: var(--btn-padding-md, 8px 16px);
+  border: none;
+  border-radius: var(--radius-lg, 8px);
+  font-size: var(--font-size-md, 14px);
+  font-weight: var(--font-weight-semibold, 600);
+  cursor: pointer;
+  transition: all var(--transition-slow, 0.3s ease);
+  display: inline-block !important;
+  min-height: 44px;
+  line-height: 1.5;
+  /* Debug: ensure button is absolutely visible */
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 100;
+}
+
+.btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--accent-primary, #0969DA) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--accent-primary, #0969DA) !important;
+  /* Debug: make it impossible to miss */
+  box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.3) !important;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover, #0550a8) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.5) !important;
+}
+
+/* Ultra-specific rule to absolutely ensure button visibility */
+.system-updater-page .page-content .updater-card .updater-actions .check-updates-button {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #0969DA !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border: 2px solid #0969DA !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  min-width: 200px !important;
+  min-height: 44px !important;
+  transition: none !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+.system-updater-page .page-content .updater-card .updater-actions .check-updates-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+.system-updater-page .page-content .updater-card .updater-actions .check-updates-button:hover:not(:disabled) {
+  background: #0550a8 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.5) !important;
+}
+
+.btn-success {
+  background: var(--accent-secondary, #1A7F37);
+  color: #ffffff !important;
+  border: 1px solid var(--accent-secondary, #1A7F37);
+}
+
+.btn-success:hover:not(:disabled) {
+  background: var(--accent-secondary-hover, #116329);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 127, 55, 0.25);
+}
+
+.btn-large {
+  width: 100%;
+  padding: var(--btn-padding-lg, 10px 20px);
+  font-size: var(--font-size-md, 14px);
+  margin-top: var(--spacing-xl, 20px);
+}
+
+.progress-section {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.progress-text {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-md);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border-primary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  transition: width var(--transition-slow);
+  border-radius: var(--radius-sm);
+}
+
+.error-message {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid var(--status-error);
+  border-left: 4px solid var(--status-error);
+  border-radius: var(--radius-lg);
+  color: var(--status-error);
+  font-size: var(--font-size-md);
+}
+
+.warning-message {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: #FFF8DC;
+  border: 1px solid var(--status-warning);
+  border-left: 4px solid var(--status-warning);
+  border-radius: var(--radius-lg);
+  color: #7D6608;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+.update-results {
+  margin-top: var(--spacing-xl);
+}
+
+.update-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.update-status.updates-available {
+  background: #FEF3C7;
+  border: 2px solid var(--status-warning);
+}
+
+.update-status.up-to-date {
+  background: #DCFCE7;
+  border: 2px solid var(--status-success);
+}
+
+.status-badge {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: #FEF3C7;
+  color: #92400E;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md);
+  letter-spacing: 0.5px;
+}
+
+.status-badge.success {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.update-status h3 {
+  margin: 0 0 5px 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.update-status p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+.updates-list {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-xl);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+}
+
+.updates-list h4 {
+  margin: 0 0 var(--spacing-lg) 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.updates-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.updates-list li {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--accent-primary);
+}
+
+.updates-list li:last-child {
+  margin-bottom: 0;
+}
+
+.updates-list strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 5px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.updates-list p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: var(--spacing-lg);
+  }
+
+  .updater-card {
+    padding: var(--spacing-xl);
+  }
+
+  .updater-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+
+  .updater-header h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .update-status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

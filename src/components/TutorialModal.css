@@ -1,0 +1,265 @@
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tutorial-modal {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tutorial-header {
+  text-align: center;
+  padding: 32px 32px 24px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.tutorial-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  color: #0969DA;
+}
+
+.tutorial-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.tutorial-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.tutorial-steps {
+  padding: 32px;
+}
+
+.tutorial-step {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 24px;
+}
+
+.step-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0969DA;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.step-icon {
+  position: absolute;
+  left: 60px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--text-secondary);
+}
+
+.step-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial-step h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 42px;
+}
+
+.tutorial-step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0 42px;
+}
+
+.tutorial-arrow {
+  width: 24px;
+  height: 24px;
+  color: var(--border-secondary);
+  margin: 16px auto 16px 20px;
+}
+
+.tutorial-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial-warning {
+  margin: 0 32px 24px;
+  padding: 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tutorial-warning svg {
+  width: 20px;
+  height: 20px;
+  color: #f59e0b;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tutorial-warning div {
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+.tutorial-warning strong {
+  font-weight: 600;
+  color: #78350f;
+}
+
+.tutorial-actions {
+  padding: 24px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.tutorial-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.tutorial-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #0969DA;
+}
+
+.tutorial-button {
+  padding: 12px 24px;
+  background: #0969DA;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 200px;
+}
+
+.tutorial-button:hover {
+  background: #0550a8;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .tutorial-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .tutorial-header {
+    padding: 24px 20px 16px;
+  }
+
+  .tutorial-header h2 {
+    font-size: 20px;
+  }
+
+  .tutorial-steps {
+    padding: 24px 20px;
+  }
+
+  .tutorial-step {
+    padding-left: 50px;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .step-icon {
+    left: 50px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .tutorial-step h3 {
+    font-size: 15px;
+    margin-left: 38px;
+  }
+
+  .tutorial-step p {
+    font-size: 13px;
+    margin-left: 38px;
+  }
+
+  .tutorial-warning {
+    margin: 0 20px 20px;
+    padding: 12px;
+  }
+
+  .tutorial-actions {
+    padding: 20px;
+  }
+}

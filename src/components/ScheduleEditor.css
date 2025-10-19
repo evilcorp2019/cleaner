@@ -1,0 +1,22 @@
+.schedule-editor .modal-body {
+  padding: 1.5rem;
+}
+
+.schedule-editor .form-group select,
+.schedule-editor .form-group input[type="time"],
+.schedule-editor .form-group input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+.schedule-editor .form-group select:focus,
+.schedule-editor .form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}

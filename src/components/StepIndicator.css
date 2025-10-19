@@ -1,0 +1,128 @@
+.step-indicator {
+  display: flex;
+  align-items: flex-start;
+  padding: 24px 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.step.future .step-marker {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-secondary);
+}
+
+.step.active .step-marker {
+  background: var(--accent-primary);
+  color: white;
+  border: 2px solid var(--accent-primary-hover);
+  box-shadow: 0 0 0 4px rgba(9, 105, 218, 0.1);
+}
+
+.step.completed .step-marker {
+  background: var(--status-success);
+  color: white;
+  border: 2px solid var(--accent-secondary-hover);
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+}
+
+.step-content {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.step-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.step.future .step-label {
+  color: var(--text-secondary);
+}
+
+.step.active .step-label {
+  color: var(--accent-primary);
+}
+
+.step.completed .step-label {
+  color: var(--status-success);
+}
+
+.step-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-width: 120px;
+}
+
+.step.future .step-description {
+  color: var(--text-tertiary);
+}
+
+.step-connector {
+  height: 2px;
+  flex: 1;
+  background: var(--border-primary);
+  margin: 0 8px;
+  position: relative;
+  top: 20px;
+  transition: background 0.3s ease;
+}
+
+.step-connector.completed {
+  background: var(--status-success);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .step-indicator {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .step-content {
+    margin-top: 0;
+    margin-left: 16px;
+    text-align: left;
+  }
+
+  .step-connector {
+    display: none;
+  }
+}

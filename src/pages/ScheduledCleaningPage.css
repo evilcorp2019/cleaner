@@ -1,0 +1,286 @@
+.scheduled-cleaning-page {
+  padding: var(--spacing-3xl);
+  max-width: var(--page-width-xl);
+  margin: 0 auto;
+}
+
+.scheduler-status-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+  border: 1px solid var(--border-primary);
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.status-info h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-badge.running {
+  background: var(--accent-secondary);
+  color: white;
+}
+
+.status-badge.stopped {
+  background: var(--status-error);
+  color: white;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.toggle-scheduler-btn {
+  padding: var(--btn-padding-md);
+  border-radius: var(--radius-lg);
+  border: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.toggle-scheduler-btn.enabled {
+  background: var(--status-error);
+  color: white;
+}
+
+.toggle-scheduler-btn.disabled {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.toggle-scheduler-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.next-schedule {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.next-schedule svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.next-schedule strong {
+  color: var(--accent-primary);
+}
+
+.section {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--btn-padding-md);
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.create-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.create-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.activity-list {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-primary);
+  overflow: hidden;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-primary);
+  transition: background var(--transition-base);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item:hover {
+  background: var(--bg-hover);
+}
+
+.activity-icon {
+  width: var(--spacing-3xl);
+  height: var(--spacing-3xl);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.activity-item.success .activity-icon {
+  background: rgba(26, 127, 55, 0.1);
+  color: var(--status-success);
+}
+
+.activity-item.failed .activity-icon {
+  background: rgba(255, 59, 48, 0.1);
+  color: var(--status-error);
+}
+
+.activity-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.activity-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.activity-meta {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  padding: var(--spacing-4xl);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.loading-state {
+  padding: var(--spacing-4xl);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+}
+
+@media (max-width: 768px) {
+  .scheduled-cleaning-page {
+    padding: var(--spacing-lg);
+  }
+
+  .scheduler-status-card {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .status-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-lg);
+  }
+
+  .status-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-scheduler-btn {
+    width: 100%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .create-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-item {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}

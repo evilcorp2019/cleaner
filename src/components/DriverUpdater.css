@@ -1,0 +1,238 @@
+.driver-updater-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: var(--shadow-md);
+}
+
+.driver-updater-card.disabled {
+  opacity: 0.6;
+}
+
+.driver-updater-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.driver-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.unavailable-message {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 20px;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.check-drivers-button,
+.update-drivers-button {
+  width: 100%;
+  padding: 10px 20px;
+  background: var(--accent-primary);
+  color: var(--bg-secondary);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.check-drivers-button:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+}
+
+.check-drivers-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.update-drivers-button {
+  background: var(--accent-secondary);
+  margin-top: 15px;
+}
+
+.update-drivers-button:hover:not(:disabled) {
+  background: var(--accent-secondary-hover);
+}
+
+.update-drivers-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.progress-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--border-primary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.drivers-section {
+  margin-top: 20px;
+}
+
+.drivers-header {
+  margin-bottom: 15px;
+}
+
+.drivers-header h3 {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.selection-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.select-btn {
+  padding: 6px 12px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-btn:hover:not(:disabled) {
+  background: var(--border-primary);
+  border-color: var(--accent-primary);
+}
+
+.select-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.selected-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: auto;
+}
+
+.drivers-list {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.driver-item {
+  padding: 15px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.driver-item:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-secondary);
+}
+
+.driver-item.selected {
+  border-color: var(--accent-primary);
+  background: rgba(var(--accent-primary-rgb, 59, 130, 246), 0.1);
+}
+
+.driver-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.driver-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.driver-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.driver-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.driver-manufacturer,
+.driver-class {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  border: 1px solid var(--border-secondary);
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0969DA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0550a8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#grad1)"/>
+
+  <!-- Trash can icon representing "cleaner" -->
+  <g fill="#FFFFFF">
+    <!-- Lid -->
+    <rect x="156" y="140" width="200" height="20" rx="4"/>
+
+    <!-- Can body -->
+    <path d="M 176 180 L 186 400 Q 186 420 206 420 L 306 420 Q 326 420 326 400 L 336 180 Z" />
+
+    <!-- Vertical lines inside can -->
+    <rect x="226" y="210" width="10" height="180" rx="5" fill="#0969DA"/>
+    <rect x="276" y="210" width="10" height="180" rx="5" fill="#0969DA"/>
+
+    <!-- Handle on lid -->
+    <rect x="226" y="100" width="60" height="40" rx="8"/>
+  </g>
+
+  <!-- Sparkle effect -->
+  <circle cx="380" cy="160" r="8" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="400" cy="200" r="6" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="360" cy="180" r="5" fill="#FFFFFF" opacity="0.7"/>
+</svg>
