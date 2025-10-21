@@ -1,6 +1,8 @@
 const { exec } = require('child_process');
 const { promisify } = require('util');
 const os = require('os');
+const path = require('path');
+const fs = require('fs').promises;
 
 const execAsync = promisify(exec);
 
@@ -113,16 +115,33 @@ async function checkWindowsUpdates(progressCallback) {
   progressCallback?.({ status: 'Checking for Windows updates...', progress: 30 });
 
   try {
-    // Use PowerShell to check for updates
-    const psCommand = `
-      $UpdateSession = New-Object -ComObject Microsoft.Update.Session
-      $UpdateSearcher = $UpdateSession.CreateUpdateSearcher()
-      $SearchResult = $UpdateSearcher.Search("IsInstalled=0")
-      $SearchResult.Updates | Select-Object Title, Description | ConvertTo-Json
+    // Use PowerShell script file to avoid quote escaping issues
+    const psScript = `
+$UpdateSession = New-Object -ComObject Microsoft.Update.Session
+$UpdateSearcher = $UpdateSession.CreateUpdateSearcher()
+$SearchResult = $UpdateSearcher.Search("IsInstalled=0")
+$SearchResult.Updates | Select-Object Title, Description | ConvertTo-Json
     `;
 
-    console.log(`[SYSTEM_UPDATER] Executing PowerShell command to check for Windows updates`);
-    const { stdout, stderr } = await execAsync(`powershell -Command "${psCommand.replace(/\n/g, ' ')}"`);
+    // Write script to temporary file
+    const scriptPath = path.join(process.env.TEMP || '/tmp', `system-update-check-${Date.now()}.ps1`);
+    await fs.writeFile(scriptPath, psScript, 'utf8');
+
+    console.log(`[SYSTEM_UPDATER] Executing PowerShell script to check for Windows updates`);
+
+    let stdout, stderr;
+    try {
+      const result = await execAsync(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`);
+      stdout = result.stdout;
+      stderr = result.stderr;
+
+      // Clean up script file
+      await fs.unlink(scriptPath).catch(() => {});
+    } catch (error) {
+      // Clean up script file on error
+      await fs.unlink(scriptPath).catch(() => {});
+      throw error;
+    }
 
     if (stderr) {
       console.warn(`[SYSTEM_UPDATER] PowerShell stderr:`, stderr);
@@ -250,35 +269,52 @@ async function installWindowsUpdates(progressCallback) {
   progressCallback?.({ status: 'Installing Windows updates...', progress: 10 });
 
   try {
-    // Use PowerShell to install updates
-    const psCommand = `
-      $UpdateSession = New-Object -ComObject Microsoft.Update.Session
-      $UpdateSearcher = $UpdateSession.CreateUpdateSearcher()
-      $SearchResult = $UpdateSearcher.Search("IsInstalled=0")
+    // Use PowerShell script file to avoid quote escaping issues
+    const psScript = `
+$UpdateSession = New-Object -ComObject Microsoft.Update.Session
+$UpdateSearcher = $UpdateSession.CreateUpdateSearcher()
+$SearchResult = $UpdateSearcher.Search("IsInstalled=0")
 
-      if ($SearchResult.Updates.Count -eq 0) {
-        Write-Output "No updates to install"
-        exit 0
-      }
+if ($SearchResult.Updates.Count -eq 0) {
+  Write-Output "No updates to install"
+  exit 0
+}
 
-      $UpdatesToInstall = New-Object -ComObject Microsoft.Update.UpdateColl
-      foreach ($Update in $SearchResult.Updates) {
-        $UpdatesToInstall.Add($Update) | Out-Null
-      }
+$UpdatesToInstall = New-Object -ComObject Microsoft.Update.UpdateColl
+foreach ($Update in $SearchResult.Updates) {
+  $UpdatesToInstall.Add($Update) | Out-Null
+}
 
-      $Installer = $UpdateSession.CreateUpdateInstaller()
-      $Installer.Updates = $UpdatesToInstall
-      $InstallResult = $Installer.Install()
+$Installer = $UpdateSession.CreateUpdateInstaller()
+$Installer.Updates = $UpdatesToInstall
+$InstallResult = $Installer.Install()
 
-      $InstallResult.ResultCode
+$InstallResult.ResultCode
     `;
+
+    // Write script to temporary file
+    const scriptPath = path.join(process.env.TEMP || '/tmp', `system-update-install-${Date.now()}.ps1`);
+    await fs.writeFile(scriptPath, psScript, 'utf8');
 
     progressCallback?.({ status: 'Downloading and installing updates...', progress: 30 });
 
-    console.log(`[SYSTEM_UPDATER] Executing PowerShell command to install Windows updates`);
-    const { stdout, stderr } = await execAsync(`powershell -Command "${psCommand.replace(/\n/g, ' ')}"`, {
-      timeout: 1800000 // 30 minute timeout for Windows updates
-    });
+    console.log(`[SYSTEM_UPDATER] Executing PowerShell script to install Windows updates`);
+
+    let stdout, stderr;
+    try {
+      const result = await execAsync(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, {
+        timeout: 1800000 // 30 minute timeout for Windows updates
+      });
+      stdout = result.stdout;
+      stderr = result.stderr;
+
+      // Clean up script file
+      await fs.unlink(scriptPath).catch(() => {});
+    } catch (error) {
+      // Clean up script file on error
+      await fs.unlink(scriptPath).catch(() => {});
+      throw error;
+    }
 
     if (stderr) {
       console.warn(`[SYSTEM_UPDATER] PowerShell stderr:`, stderr);
