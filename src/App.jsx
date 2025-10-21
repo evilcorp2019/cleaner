@@ -41,6 +41,11 @@ function App() {
   }, []);
 
   const handleNavigate = (page) => {
+    // Prevent navigation to Windows-only pages on non-Windows platforms
+    if (page === 'driver-updater' && systemInfo?.platform !== 'win32') {
+      console.warn('[APP] Blocked navigation to driver-updater - not on Windows');
+      return;
+    }
     setCurrentPage(page);
   };
 

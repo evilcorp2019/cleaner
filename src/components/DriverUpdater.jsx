@@ -13,25 +13,37 @@ function DriverUpdater({ systemInfo }) {
   const isWindows = systemInfo?.platform === 'win32';
 
   useEffect(() => {
-    if (isWindows) {
+    // Only check Windows Update service if we're actually on Windows
+    // and systemInfo is loaded
+    if (isWindows && systemInfo) {
       checkWindowsUpdateService();
     }
 
-    window.electronAPI.onDriverCheckProgress((data) => {
-      setCheckProgress(data);
-    });
+    if (window.electronAPI) {
+      window.electronAPI.onDriverCheckProgress((data) => {
+        setCheckProgress(data);
+      });
 
-    window.electronAPI.onDriverUpdateProgress((data) => {
-      setUpdateProgress(data);
-    });
+      window.electronAPI.onDriverUpdateProgress((data) => {
+        setUpdateProgress(data);
+      });
+    }
 
     return () => {
-      window.electronAPI.removeDriverCheckProgressListener();
-      window.electronAPI.removeDriverUpdateProgressListener();
+      if (window.electronAPI) {
+        window.electronAPI.removeDriverCheckProgressListener();
+        window.electronAPI.removeDriverUpdateProgressListener();
+      }
     };
-  }, [isWindows]);
+  }, [isWindows, systemInfo]);
 
   const checkWindowsUpdateService = async () => {
+    // Extra safety check - don't run on non-Windows platforms
+    if (!isWindows || !systemInfo) {
+      console.log('[DriverUpdater] Skipping Windows Update check - not on Windows or systemInfo not loaded');
+      return;
+    }
+
     try {
       const result = await window.electronAPI.checkWindowsUpdate();
       if (result.success) {
@@ -69,7 +81,7 @@ function DriverUpdater({ systemInfo }) {
         } else if (result.drivers && result.drivers.length > 0) {
           // Successfully found driver updates
           setDrivers(result.drivers);
-          const allDriverIds = new Set(result.drivers.map(d => d.UpdateID || d.KB));
+          const allDriverIds = new Set(result.drivers.map((d, index) => d.UpdateID || d.KB || `driver-${index}`));
           setSelectedDrivers(allDriverIds);
 
           let methodInfo = '';
@@ -157,7 +169,10 @@ function DriverUpdater({ systemInfo }) {
         }
 
         // Remove updated drivers from the list
-        const remainingDrivers = drivers.filter(d => !selectedDrivers.has(d.UpdateID));
+        const remainingDrivers = drivers.filter((d, index) => {
+          const driverId = d.UpdateID || d.KB || `driver-${index}`;
+          return !selectedDrivers.has(driverId);
+        });
         setDrivers(remainingDrivers);
         setSelectedDrivers(new Set());
       } else {
