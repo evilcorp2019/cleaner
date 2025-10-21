@@ -18,6 +18,7 @@ import ExtensionRemnantCleanerPage from './pages/ExtensionRemnantCleanerPage';
 function App() {
   const [systemInfo, setSystemInfo] = useState(null);
   const [currentPage, setCurrentPage] = useState('home');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log('[APP] window.electronAPI:', window.electronAPI);
@@ -26,8 +27,10 @@ function App() {
       window.electronAPI.getSystemInfo().then(info => {
         console.log('[APP] System info received:', info);
         setSystemInfo(info);
+        setIsLoading(false);
       }).catch(err => {
         console.error('[APP] Failed to get system info:', err);
+        setIsLoading(false);
       });
     } else {
       console.warn('[APP] Desktop API not available - running in browser mode');
@@ -37,6 +40,7 @@ function App() {
         arch: 'unknown',
         version: 'N/A'
       });
+      setIsLoading(false);
     }
   }, []);
 
@@ -80,6 +84,33 @@ function App() {
         return <Home systemInfo={systemInfo} onNavigate={handleNavigate} />;
     }
   };
+
+  if (isLoading) {
+    return (
+      <ThemeProvider>
+        <div className="app">
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+            flexDirection: 'column',
+            gap: '20px'
+          }}>
+            <div style={{
+              width: '50px',
+              height: '50px',
+              border: '4px solid rgba(100, 100, 255, 0.2)',
+              borderTop: '4px solid rgb(100, 100, 255)',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }}></div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>Loading System Cleaner...</p>
+          </div>
+        </div>
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider>

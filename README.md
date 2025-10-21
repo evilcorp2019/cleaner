@@ -81,21 +81,52 @@ cleaner/
 
 ## Troubleshooting
 
-**App won't start:**
+### Blue Screen or Blank Screen on Windows
+
+If you see only a blue screen with no features after downloading from GitHub:
+
+1. **Install dependencies first:**
+   ```bash
+   npm install
+   ```
+
+2. **Run the development version:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Check the console:** Open DevTools (Ctrl+Shift+I on Windows) to see any error messages
+
+4. **Verify Node.js version:**
+   ```bash
+   node --version  # Should be v16 or higher
+   ```
+
+### App Won't Start
+
 ```bash
 rm -rf node_modules package-lock.json
 npm cache clean --force
 npm install
+npm run dev
 ```
 
-**Permission errors:**
-- macOS: Grant Full Disk Access
-- Windows: Run as Administrator
+### Permission Errors
 
-**Browser cleaning fails:**
-- Close browser completely
-- Check for running processes
-- Restart the app
+- **macOS:** Grant Full Disk Access in System Preferences > Security & Privacy > Privacy > Full Disk Access
+- **Windows:** Run as Administrator (right-click the app and select "Run as Administrator")
+
+### Browser Cleaning Fails
+
+- Close browser completely before cleaning
+- Check Task Manager for running browser processes
+- Restart the System Cleaner app
+
+### Driver Updates Not Working (Windows)
+
+- Run the app as Administrator
+- Ensure Windows Update service is enabled in Services (services.msc)
+- Check internet connection
 
 ## License
 
