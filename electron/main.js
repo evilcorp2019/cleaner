@@ -1,5 +1,29 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+
+// Handle uncaught exceptions to prevent EPIPE crashes
+process.on('uncaughtException', (error) => {
+  // Ignore EPIPE errors (broken pipe when console output is closed)
+  if (error.code === 'EPIPE' || error.errno === -32) {
+    return;
+  }
+  console.error('Uncaught Exception:', error);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// Safe console logging wrapper to prevent EPIPE crashes
+const safeLog = (...args) => {
+  try {
+    console.log(...args);
+  } catch (e) {
+    // Silently ignore console errors
+  }
+};
+
 const { scanSystem, cleanFiles } = require('./cleaner');
 const {
   checkDriverUpdates,
@@ -45,8 +69,8 @@ let extensionCleaner;
 
 function createWindow() {
   const preloadPath = path.join(__dirname, 'preload.js');
-  console.log('[MAIN] Preload script path:', preloadPath);
-  console.log('[MAIN] Preload script exists:', require('fs').existsSync(preloadPath));
+  safeLog('[MAIN] Preload script path:', preloadPath);
+  safeLog('[MAIN] Preload script exists:', require('fs').existsSync(preloadPath));
 
   mainWindow = new BrowserWindow({
     width: 1000,
@@ -72,7 +96,7 @@ function createWindow() {
   }
 
   mainWindow.once('ready-to-show', () => {
-    console.log('[MAIN] Window ready to show');
+    safeLog('[MAIN] Window ready to show');
     mainWindow.show();
     if (isDev) {
       mainWindow.webContents.openDevTools();
@@ -80,11 +104,17 @@ function createWindow() {
   });
 
   mainWindow.webContents.on('did-finish-load', () => {
-    console.log('[MAIN] Page finished loading');
+    safeLog('[MAIN] Page finished loading');
     // Give the preload script a moment to execute
     setTimeout(() => {
       mainWindow.webContents.executeJavaScript('console.log("[MAIN->RENDERER] Checking electronAPI:", typeof window.electronAPI);')
-        .catch(err => console.error('[MAIN] Error checking electronAPI:', err));
+        .catch(err => {
+          try {
+            console.error('[MAIN] Error checking electronAPI:', err);
+          } catch (e) {
+            // Ignore console errors
+          }
+        });
     }, 100);
   });
 
